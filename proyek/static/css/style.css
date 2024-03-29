@@ -1,0 +1,19 @@
+
+a{
+    text-decoration: none;
+    color: white;
+    background-color: red;
+    padding: 5px;
+    border-radius: 5px;
+}
+a:hover{
+    background-color: lightgrey;
+    color: red;
+}
+table{
+    width: 100%;
+    border: 1px solid transparent;
+    border-bottom: 1px solid black;
+}
+
+/* konten anonimous */

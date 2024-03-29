@@ -1,0 +1,41 @@
+{% extends 'account/base.html' %}
+{% load static %}
+
+{% block title %}Staff{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <h1>Halaman Staff</h1>
+    <h3>Hai {{ user.username }}, Selamat Bekerja</h3>
+    <a href="{% url 'artikel:tambah' %}">Tambah</a>
+    <table border="" cellpadding="5" cellspacing="0">
+        <tr>
+            <th>No</th>
+            <th>Gambar</th>
+            <th>Judul</th>
+            <th colspan="3">Sunting</th>
+        </tr>
+        {% for artikel in object_list %}
+        <tr>
+            <td>{{forloop.counter}}</td>
+            <td><img src="{{ artikel.gambar.url }}" alt="" width="50px" height="50px"></td>
+            <td>{{ artikel.judul }}</td>
+            <td><a href="{% url 'artikel:detail' artikel.id %}">Lihat</a></td>
+            <td><a href="{% url 'artikel:ubah' artikel.id %}">Edit</a></td>
+            <td><a href="{% url 'artikel:hapus' artikel.id %}">Hapus</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
+{% endblock %}

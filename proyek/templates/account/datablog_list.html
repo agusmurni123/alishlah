@@ -1,0 +1,161 @@
+{% extends 'account/base.html' %}
+{% load static %}
+
+{% block title %}Daftar Artikel{% endblock %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konten</title>
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}"> -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'fontawesome-free-6.4.2-web/css/all.css' %}">
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
+    
+    <style>
+       
+        nav ul li{
+            width: 10%;
+            
+        }
+        .menuaktive{
+            display: block;
+        }
+        .gmb-utama{
+            filter: brightness(40%);
+        }
+        figure{
+            position:relative;
+            width:400%;
+            left:0;
+            animation: 10s slide infinite;
+        }
+        .slide{
+            width:25%;
+            float:left;
+        }
+        @keyframes slide{
+            0%{
+                left:0;
+            }
+            10%{
+                left:0;
+            }
+            20%{
+                left:-100%;
+            }
+            30%{
+                left:-100%;
+            }
+            40%{
+                left:-200%;
+            }
+            50%{
+                left:-200%;
+            }
+            55%{
+                left:-300%;
+            }
+            65%{
+                left:-300%;
+            }
+            66%{
+                left:-200%;
+            }
+            74%{
+                left:-200%;
+            }
+            75%{
+                left:-100%;
+            }
+            85%{
+                left:-100%;
+            }
+            90%{
+                left:0;
+            }
+            100%{
+                left:0;
+            }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+    
+    <nav class="flex flex-col sm:flex-row justify-between w-full sm:w-screen bg-blue-500">
+        <div class="judul w-auto sm:w-2/5 flex justify-between p-5">
+            <div class="flex justify-center items-center">
+                <img src="{% static 'img/lengkung1.png' %}" alt="" width="20px" height="20px">
+                <h2 class="ml-1 text-red-600 font-bold">Al-Ishlah</h2>
+            </div>
+            <h3 class="block lg:hidden"><i class="fa fa-bars"></i></h3>
+        </div>
+        <ul class="menu flex-col sm:flex-row w-full hidden lg:flex mt-5">
+            <li class="text-white hover:text-red-700"><a href="">Sosial</a></li>
+            <li class="text-white hover:text-red-700"><a href="">Dakwah</a></li>
+            <li class="text-white hover:text-red-700"><a href="">Pendidikan</a></li>
+            <li class="text-white hover:text-red-700"></li>
+            <li class="text-white hover:text-red-700"><a href="">About</a></li>
+            <li class="text-white hover:text-red-700"><a href="user/">Login</a></li>
+        </ul>
+    </nav>
+    <div class="container flex flex-col sm:flex-row w-full">
+        <div class="pos-utama w-full sm:w-2/5 h-screen mr-10 ml-0 sm:ml-5">
+            <div class="slider overflow-hidden p-0 w-full h-1/2 sm:h-1/2">
+                <figure class="h-full">
+                    <div class="slide h-full">
+                        <img class="w-full h-full" src="{% static 'img/1.png' %}" alt="">
+                    </div>
+                    <div class="slide h-full">
+                        <img class="w-full h-full" src="{% static 'img/12.png' %}" alt="">
+                    </div>
+                    <div class="slide h-full">
+                        <img class="w-full h-full" src="{% static 'img/13.png' %}" alt="">
+                    </div>
+                    <div class="slide h-full">
+                        <img class="w-full h-full" src="{% static 'img/14.png' %}" alt="">
+                    </div>
+                </figure>
+            </div>
+            <div class="pos mb-3 overflow-hidden p-0 sm:p-0 w-full h-1/2 sm:h-1/2">
+                {% for artikel in object_list %}
+                <ul class="w-full h-full relative">
+                    <li class="w-full h-full">
+                        <a class="w-full h-full" href="{% url 'artikel:detail' artikel.id %}">
+                            <img class="gmb-utama w-full h-full" src="{{artikel.gambar.url}}" alt="">
+                        </a>
+                    </li>
+                    <li class="absolute bottom-0 left-1/2 text-white text-center transform -translate-x-1/2">
+                        <h4 class="font-bold">{{artikel.judul}}</h4>
+                        <p>{{artikel.penulis}}</p>
+                    </li>
+                </ul>
+                {% endfor %}
+            </div>
+            
+        </div>
+        
+        <div class="wrapper  mt-8 sm:mt-0 mx-auto h-screen overflow-auto w-full flex flex-row sm:flex-col flex-wrap p-2">
+            {% for artikel in object_list %}
+            <ul class="konten w-full sm:w-2/5 flex mb-3 mr-6">
+                <img class="" src="{{ artikel.gambar.url }}" alt="" style="width: 100px; height: 100px;">
+                <ul class="cap w-3/4 ml-3">
+                    <li class="text-lg font-bold">{{ artikel.judul }}</li>
+                    <ul class="detail mb-1">
+                        <li class="text-sm">Author: {{artikel.penulis}}</li>
+                        <li class="text-sm">Kategori: Berita</li>
+                    </ul>
+                    <li class="rounded"><a class="rounded bg-red-500 text-white p-1" href="{% url 'artikel:detail' artikel.id %}">Baca</a></li>
+                </ul>
+            </ul>
+            {% endfor %}
+        </div>
+    </div>
+
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
+{% endblock %}

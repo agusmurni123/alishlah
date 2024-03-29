@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+   
+</head>
+<body>
+    <ul class="w-screen h-screen bg-blue-300 flex flex-col justify-center items-center">
+        <li class="bg-blue-600 w-2/5 h-10 rounded flex justify-center items-center text-white mb-10"><a href="{% url 'artikel:login_view' %}">Masuk</a></li>
+        <li class="bg-blue-600 w-2/5 h-10 rounded flex justify-center items-center text-white"><a href="{% url 'artikel:register' %}">Daftar</a></li>
+    </ul> 
+</body>
+</html>

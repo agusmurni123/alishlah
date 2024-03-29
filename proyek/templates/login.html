@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+   
+</head>
+<body>
+    <form class="w-screen h-screen bg-blue-300 flex flex-col justify-center items-center" action="" method="post">
+        {% csrf_token %}
+        <table class="bg-blue-500 text-white rounded">
+            {{ form.as_table }}
+        </table>
+        <input class="w-1/2 mt-10 p-1 bg-blue-500 text-white rounded" type="submit" value="Login">
+    </form>
+</body>
+</html>

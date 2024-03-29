@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>baca</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+   
+</head>
+<body>
+    <ul class="bg-blue-300 w-screen h-screen flex flex-col justify-center items-center">
+        <li class="mb-5"><img src="{{object.gambar.url}}" alt="" width="300px" height="300px"></li>
+        <li class="font-bold">{{ object.judul }}</li>
+        <li class="mb-5 text-gray-500 underline"> By {{ object.penulis }}</li>
+        <li>{{ object.teks }}</li>
+    </ul>
+</body>
+</html>
